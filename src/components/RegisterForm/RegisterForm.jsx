@@ -5,26 +5,23 @@ import { register } from '../../redux/auth/operations';
 export default function RegisterForm() {
     const dispatch = useDispatch();
 
-    // function handleSubmit(values, { resetForm }){
-    //     dispatch(
-    //         register({
-    //         name: values.name,
-    //         email: values.email,
-    //         password: values.password,
-    //         })
-    //     );
-        
-    //     resetForm();
-    // }
-
-        const handleSubmit = async (values, { resetForm }) => {
+    const handleSubmit = (values, { resetForm }) => {
         try {
-            dispatch(register(values));
-            resetForm();
+        dispatch(
+            register({
+            name: values.name,
+            email: values.email,
+            password: values.password,
+            })
+        );
+        console.log('registration success');
         } catch (error) {
-            console.error('Registration failed:', error);
+        console.log('registration error:', error);
         }
+
+        resetForm();
     };
+
 
     return (
     <Formik initialValues={{ name: '', email: '', password: '' }} onSubmit={handleSubmit}>
