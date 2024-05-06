@@ -6,12 +6,12 @@ import AuthNav from "../AuthNav/AuthNav";
 import styles from  './AppBar.module.css'
 
 export default function AppBar() {
-    const { isLoggednIn } = useSelector(selectIsLoggedIn);
+    const { isLoggedIn} = useSelector(selectIsLoggedIn);
 
     return(
         <div className={styles.navigation}>
             <Navigation />
-            {isLoggednIn ? <UserMenu/> : <AuthNav/>}
+            {isLoggedIn ? <UserMenu/> : <AuthNav/>}
         </div>
     )
 }
