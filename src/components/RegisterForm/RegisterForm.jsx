@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations'; 
+import styles from './RegisterForm.module.css'
 
 export default function RegisterForm() {
     const dispatch = useDispatch();
@@ -24,22 +25,22 @@ export default function RegisterForm() {
 
 
     return (
-    <Formik initialValues={{ name: '', email: '', password: '' }} onSubmit={handleSubmit}>
-        <Form>
-            <label htmlFor="name">
-                Name
-                <Field type="text" id="name" name="name" />
-            </label>
-            <label htmlFor="email">
-                Email
-                <Field type="email" id="email" name="email" />
-            </label>
-            <label htmlFor="password">
-                Password
-                <Field type="password" id="password" name="password" />
-            </label>
-            <button type="submit">Register</button>
-        </Form>
+        <Formik initialValues={{ name: '', email: '', password: '' }} onSubmit={handleSubmit}>
+            <Form className={styles.registerForm}>
+                <label htmlFor="name" className={styles.label}>
+                    Name
+                    <Field type="text" id="name" name="name" className={styles.field}/>
+                </label>
+                <label htmlFor="email" className={styles.label}>
+                    Email
+                    <Field type="email" id="email" name="email" className={styles.field}/>
+                </label>
+                <label htmlFor="password" className={styles.label}>
+                    Password
+                    <Field type="password" id="password" name="password" className={styles.field}/>
+                </label>
+                <button type="submit" className={styles.buttonSubmit}>Register</button>
+            </Form>
         </Formik>
     );
 }

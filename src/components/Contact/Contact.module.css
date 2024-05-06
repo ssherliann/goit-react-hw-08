@@ -3,14 +3,14 @@
     align-items: center;
     border: #111 solid 1px;
     border-radius: 4px;
-    width: 200px;
+    padding: 10px;
+    gap: 20px
 }
 
 .contactInfo {
     display: inline;
     gap: 10px;
-    width: 130px;
-    margin: 5px;
+    width: 100%;
 }
 
 p {
@@ -21,4 +21,13 @@ p {
     display: flex;
     flex-direction: row-reverse;
     margin: 0;
+    background-color: #ED0000;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+}
+
+.deleteButton:hover {
+    background-color: #CB0000;
 }

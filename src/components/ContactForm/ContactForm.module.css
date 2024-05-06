@@ -5,13 +5,38 @@
     width: 200px;
 }
 
+.field {
+    border-radius: 2px;
+    border: 1px #000 solid;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 14px;
+}
+
 .btnAddcontact {
-    display: flex;
-    margin: 10px auto;
+    margin: 10px 22px;
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #256AFF;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.btnAddcontact:hover {
+    background-color: #215CDC;
 }
 
 .contactFormContainer {
-    border: #111 solid 1px;
+    padding: 10px;
+    border: #000 solid 1px;
     border-radius: 4px;
     width: 220px;
     height: 100%;

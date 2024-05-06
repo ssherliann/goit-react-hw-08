@@ -12,8 +12,8 @@ export default function Contact({ id, name, number }) {
     return (
         <div className={styles.contactContainer}>
             <div className={styles.contactInfo}>
-                <p>{name}</p>
-                <p>{number}</p>
+                <p>Name: {name}</p>
+                <p>Tel: {number}</p>
             </div>
             <button onClick={handleDelete} className={styles.deleteButton}>Delete</button>
         </div>
