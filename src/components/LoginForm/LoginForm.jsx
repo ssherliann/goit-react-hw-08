@@ -1,29 +1,29 @@
 import { Formik, Form, Field } from 'formik';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
-import styles from './LoginForm.module.css'
+import styles from './LoginForm.module.css';
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
 
-    const handleSubmit = (values, { resetForm }) => {
+    const handleSubmit = async (values, { resetForm }) => {
         try {
-        dispatch(
-            logIn({
-            email: values.email,
-            password: values.password,
-            })
-        );
-        console.log('login success');
+            dispatch(
+                logIn({
+                    email: values.email,
+                    password: values.password,
+                })
+            );
+            console.log('login success');
+            toast.success('Login success', { duration: 4000, position: 'top-center'})
         } catch (error) {
-        console.log('login error:', error);
+            console.log('login error:', error);
+            toast.error('Login error', { duration: 4000, position: 'top-center'})
         }
 
         resetForm();
     };
-
-    const notify = () => toast.success('Login success');
 
     return (
         <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
@@ -37,10 +37,11 @@ export const LoginForm = () => {
                     <Field type="password" id="password" name="password" className={styles.field}/>
                 </label>
                 <div>
-                    <button type="submit" className={styles.buttonSubmit} onSubmit={notify}>Log In</button>
-                    <Toaster position="top-center" reverseOrder={false}/>
+                    <button type="submit" className={styles.buttonSubmit}>Log In</button>
                 </div>
             </Form>
+            {/* Remove Toaster from here */}
         </Formik>
     );
 };
+

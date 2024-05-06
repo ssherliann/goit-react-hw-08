@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { addContact } from '../../redux/contacts/operations'
 import * as Yup from "yup";
 import styles from "./ContactForm.module.css";
@@ -24,12 +24,17 @@ const initialValues = {
 export default function ContactForm() {
     const dispatch = useDispatch();
 
-    const handleSubmit = (values, { resetForm }) => {
-        dispatch(addContact({ name: values.name, number: values.number })); 
-        resetForm();
+    const handleSubmit = async (values, { resetForm }) => {
+        try {
+            dispatch(addContact({ name: values.name, number: values.number })); 
+            resetForm();
+            toast.success('Success adding number', { duration: 4000, position: 'top-center'})
+        } catch (error) {
+            console.error('Error adding contact:', error);
+            toast.error('Error adding contact', { duration: 4000, position: 'top-center'});
+        }
     };
-
-    const notify = () => toast.success('Adding number success');
+    
 
     return (
         <Formik
@@ -48,10 +53,7 @@ export default function ContactForm() {
                     <Field type="tel" name="number" className={styles.field}/>
                     <ErrorMessage name="number" component="span" className={styles.error} />
                 </div>
-                <div>
-                    <button type="submit" className={styles.btnAddcontact} onSubmit={notify}>Add contact</button>
-                    <Toaster position="top-center" reverseOrder={false}/>
-                </div>
+                <button type="submit" className={styles.btnAddcontact}>Add contact</button>
             </Form>
         </Formik>
     );

@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations'; 
 import styles from './RegisterForm.module.css'
@@ -16,13 +17,14 @@ export default function RegisterForm() {
             })
         );
         console.log('registration success');
+        toast.success('Registration success', { duration: 4000, position: 'top-center'})
         } catch (error) {
         console.log('registration error:', error);
+        toast.error('Registration error', { duration: 4000, position: 'top-center'})
         }
 
         resetForm();
     };
-
 
     return (
         <Formik initialValues={{ name: '', email: '', password: '' }} onSubmit={handleSubmit}>
