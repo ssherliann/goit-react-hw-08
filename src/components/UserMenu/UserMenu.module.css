@@ -1,0 +1,21 @@
+.userMenu {
+    display: flex;
+    gap: 350px;
+}
+
+.buttonLogOut {
+    width: 100px;
+    height: 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ED0000;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.buttonLogOut:hover {
+    background-color: #CB0000;
+}
